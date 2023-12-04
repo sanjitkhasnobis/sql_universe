@@ -1,0 +1,91 @@
+1.  create table softwares
+   (
+    sw_name varchar(200)
+   );
+
+   insert into softwares values
+   ('ChatGpt'),
+   ('ChatGpt'),
+   ('ChatGpt'),
+   ('Databricks'),
+   ('Databricks'),
+   ('Airflow'),
+   ('Airflow')
+
+   select sw_name,count(*) 
+   from softwares
+   group by sw_name
+
+2. For this problem please make sure to create and run the table scripts mock_data.sql
+   
+   select department, count(*) no_of_employees,sum(salary) sum_salary, 
+   round(avg(salary),2) avg_salary, max(salary) max_salary, min(salary) min_salary
+   from employees
+   group by department   
+   order by no_of_employees
+
+
+3. select department,gender, count(*) no_of_employees,sum(salary) sum_salary, 
+   round(avg(salary),2) avg_salary, max(salary) max_salary, min(salary) min_salary
+   from employees
+   group by department,gender   
+   order by department
+
+4. select department,count(*)
+   from employees
+   group by department
+   having count(*) > 20
+
+5. select count(*),first_name 
+   from employees
+   group by first_name
+   having count(*) > 1
+
+6. select department
+   from employees
+   group by department
+
+7. select substring(email,position('@' in email)+1),count(*)
+   from employees
+   where email IS NOT NULL
+   group by substring(email,position('@' in email)+1)
+
+8. select gender,region_id,max(salary),min(salary),round(avg(salary))
+   from employees
+   group by gender,region_id
+   order by gender,region_id 
+
+9.1 select state,max(supply) maximum_Supply
+    from fruit_imports
+    GROUP BY state
+    order by max(supply) desc
+    limit 1
+
+9.2 select season,max(cost_per_unit) highest_cost_per_unit
+    from fruit_imports
+    group by season
+
+9.3 select state,name,count(*)
+    from fruit_imports
+    group by state,name
+    having count(*) > 1
+
+9.4 select count(*), season 
+    from fruit_imports
+    group by season
+    having count(*) > 3 or count(*) > 4
+
+9.5 select state,sum(supply*cost_per_unit) 
+    from fruit_imports
+    group by state
+    order by sum desc
+    limit 1
+
+9.6 select count(coalesce(fruit_name,'somevalue')) 
+    from fruits
+  
+
+
+  
+   
+
